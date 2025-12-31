@@ -1,6 +1,7 @@
 'use client'
 import React, { useState } from "react";
 import { Bell, Package, PlusCircle, List, Megaphone, Menu, X } from "lucide-react";
+import { CiDeliveryTruck } from "react-icons/ci";
 import { motion } from "framer-motion";
 import Orders from "./Orders";
 import { toast, ToastContainer } from "react-toastify";
@@ -12,6 +13,7 @@ import { AllMessage } from "./Messages";
 import { FaImage, FaKey, FaMailBulk } from "react-icons/fa";
 import ChangePassword from "./Password";
 import SliderDashboard from "./Slider";
+import { Rider } from "./Rider";
 
 export default function Dashboard() {
     const [activeTab, setActiveTab] = useState("orders");
@@ -46,6 +48,7 @@ export default function Dashboard() {
                     <SidebarButton label="সকল বার্তা" icon={<FaMailBulk className="w-5 h-5" />} active={activeTab === "notices"} onClick={() => { setActiveTab("notices"); setSidebarOpen(false); }} />
                     <SidebarButton label="বিজ্ঞাপণ" icon={<FaImage className="w-5 h-5" />} active={activeTab === "slider"} onClick={() => { setActiveTab("slider"); setSidebarOpen(false); }} />
                     <SidebarButton label="নতুন পাসওয়ার্ড" icon={<FaKey className="w-5 h-5" />} active={activeTab === "password"} onClick={() => { setActiveTab("password"); setSidebarOpen(false); }} />
+                    <SidebarButton label="রাইডার" icon={<CiDeliveryTruck className="w-8 h-8" />} active={activeTab === "rider"} onClick={() => { setActiveTab("rider"); setSidebarOpen(false); }} />
                 </nav>
             </aside>
 
@@ -87,6 +90,7 @@ export default function Dashboard() {
                     {activeTab === "slider" && <SliderDashboard />}
                     {activeTab === "notices" && <AllMessage />}
                     {activeTab === "password" && <ChangePassword />}
+                    {activeTab === "rider" && <Rider />}
                 </motion.div>
             </main>
 
